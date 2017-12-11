@@ -7,16 +7,25 @@ let context = canvas.getContext('2d');
 let boxSize = 10;
 boxes = Math.floor(400/boxSize);
 
- direction = 'RIGHT';
+direction = 'RIGHT';
 
-
+canvas.addEventListener('click', movement);
+ // context.addEventListener('click', movement);
 
 
 
 
 //create game loop
 
-drawBoard();
+
+function movement(e, direction) {
+    context.fillStyle = "black";
+      
+        context.fillRect(Math.floor(e.offsetX/boxSize)*boxSize, 
+                   Math.floor(e.offsetY/boxSize)*boxSize,
+                   boxSize, boxSize);
+  }
+
 
 function drawBoard(){
   context.beginPath();
@@ -27,16 +36,23 @@ function drawBoard(){
     for(let col = 0; col <=boxes; col +=1){
       let x = col * boxSize;
       let y = row * boxSize;
-      context.rect(x,y,boxSize, boxSize);
-      context.fill()
-      context.stroke();
+      context.rect(x,y,boxSize, boxSize); //creates a rectangle 
+      context.fill(); //fills the rectangle
+      context.stroke(); // draw the path 
     }
   }
+}
 
+function movement(e){
+  console.log(e);
+
+  context.fillStyle = 'black';
+  context.fillRect = Math.floor(e.offsetX / boxSize) * boxSize;
 }
 
 function tick(){
   // update every100ms
+ 
 
   //determine the direction
     // if left cordinates change to -1, 0 relative to the current position
@@ -51,7 +67,8 @@ function tick(){
 
 
 
-
+drawBoard();
+tick();
 
 
 
