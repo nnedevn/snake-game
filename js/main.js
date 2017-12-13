@@ -1,98 +1,96 @@
-$(function(){
+var SNAKE = {}
+
+SNAKE.game = (function() {
+
+  let framerate = 60;
+
+  let canvas;
+  let canvasContext;
+  let food;
+  let score;
+  let speed = 130;
+
+  let xPos = 0;
+  let yPos = 0;
 
 
-// 
-let canvas = document.getElementById('canvas');
-let context = canvas.getContext('2d');
-let boxSize = 10;
-boxes = Math.floor(400/boxSize);
+  //Snake Array
+  let snakeArray;
 
-direction = 'RIGHT';
+  function createSnake() {
+    console.log('Creating snake');
+    let snakeLength = 5;
+    snakeArray = [];
 
-canvas.addEventListener('click', movement);
- // context.addEventListener('click', movement);
+    for (let i = snakeArray.length - 1; i >= 0; i -= 1) {
+      snakeArray.push({
+        x: i,
+        y: 0
+      });
+      console.log(i);
+    }
 
-
-
-
-//create game loop
-
-
-function movement(e, direction) {
-    context.fillStyle = "black";
-      
-        context.fillRect(Math.floor(e.offsetX/boxSize)*boxSize, 
-                   Math.floor(e.offsetY/boxSize)*boxSize,
-                   boxSize, boxSize);
   }
 
 
-function drawBoard(){
-  context.beginPath();
-  context.fillStyle = 'white';
-  context.lineWidth = 1;
-  contextStrokeStyle = 'black';
-  for (let row = 0; row <= boxes; row+=1) {
-    for(let col = 0; col <=boxes; col +=1){
-      let x = col * boxSize;
-      let y = row * boxSize;
-      context.rect(x,y,boxSize, boxSize); //creates a rectangle 
-      context.fill(); //fills the rectangle
-      context.stroke(); // draw the path 
+  function createFood() {
+    console.log('Creating Food');
+    food = {
+      x: Math.round(Math.random() * (document.width - canvas.width) / canvas.width),
+      y: Math.round(Math.random() * (document.heigh - canvas.hight) / canvas.high)
     }
   }
-}
-
-function movement(e){
-  console.log(e);
-
-  context.fillStyle = 'black';
-  context.fillRect = Math.floor(e.offsetX / boxSize) * boxSize;
-}
-
-function tick(){
-  // update every100ms
- 
-
-  //determine the direction
-    // if left cordinates change to -1, 0 relative to the current position
-
-    //insert new position on the que
-    //remove the last position from the que
-
-}
-
-  
-//  
 
 
+  function gameLoop() {
+    console.log('loop');
+    xPos += 2;
+    yPos += 4;
+    //canvasContext.clearRect(0, 0, 100, 100); //clear the canvas
+    canvasContext.fillStyle = '#F00';
+    canvasContext.fillRect(xPos, yPos, 30, 50); //a moving rect
+    // setInterval(gameLoop, 1000);
+    window.requestAnimationFrame(gameLoop);
+  }
 
-drawBoard();
-tick();
+  // Initializing function
+  function init() {
+    console.log('Initializing')
+    canvas = document.getElementById('canvas');
+    canvasContext = canvas.getContext('2d');
+
+    gameLoop();
+  }
+
+  return {
+    init: init
+  }
+
+}());
+
+SNAKE.snake = (function() {
+  let posArr = [];
+  let cellSize = 10;
 
 
+  posArr.push[6, 4];
+  posArr.push[5, 4]
+  posArr.push[4, 4];
+  let direction = 'right';
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  function drawSection(canvasContext, pos) {
+    let x = SNAKE.snake.cellSize * pos[0];
+    let y = SNAKE.snake.cellSize * pos[1];
+    canvasContext.fillRect(x, y, SNAKE.snake.cellSize, SNAKE.snake.cellSize);
+  }
 
 
 
 }());
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  SNAKE.game.init();
+
+})
