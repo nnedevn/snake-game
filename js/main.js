@@ -24,11 +24,12 @@ SNAKE.game = (function() {
       }
 
       let key = evt.which;
-      let direction = directionKeys[key];
+      let newDirection = directionKeys[key];
 
       //check if direction has been given
-      if (direction) {
-        snake.setDirection(direction);
+      if (newDirection) {
+        console.log('sending new direction to snake', newDirection);
+        snake.setDirection(newDirection);
 
       }
 
@@ -109,23 +110,28 @@ SNAKE.snake = function() {
   }
 
   function directionIsValid(inputDirection, movingDirection) {
-    console.log('movingDirection',movingDirection);
+    // console.log('movingDirection',movingDirection);
     console.log('inputDirection',inputDirection); 
     let possibleDirections = [];
-    if (movingDirection == 'up' || movingDirection == 'down') {
+    if (movingDirection === 'up' || movingDirection === 'down') {
+      
 
-      possibleDirection = ['left', 'right'];
+      possibleDirections = ['left', 'right'];
       console.log('possibleDirections',possibleDirections);
     } else if (movingDirection === 'left' || movingDirection === 'right') {
       possibleDirections = ['up', 'down'];
       console.log(possibleDirections);
     }
 
-    if (possibleDirections.includes(inputDirection)) return true;
+    return(possibleDirections.includes(inputDirection));
   }
 
   function setDirection(inputDirection) {
+
+    console.log('current direction', direction);
+
     if (directionIsValid(inputDirection, direction)) {
+      console.log('setting movement direction to ', inputDirection);
       direction = inputDirection;
      
     }
