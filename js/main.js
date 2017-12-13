@@ -4,11 +4,10 @@ SNAKE.game = (function() {
 
   SNAKE.width = 200;
   SNAKE.height = 200;
-  let framerate = 10;
+  let framerate = 1;
   let snake;
   let canvas;
   let canvasContext;
-
 
   //Snake Array
   let snakeArray;
@@ -30,11 +29,7 @@ SNAKE.game = (function() {
       if (newDirection) {
         console.log('sending new direction to snake', newDirection);
         snake.setDirection(newDirection);
-
       }
-
-
-
     });
   }
 
@@ -70,8 +65,7 @@ SNAKE.game = (function() {
 SNAKE.snake = function() {
   let posArr = [];
   let cellSize = 10;
-
-
+  //starting snake length of 3 squares
   posArr.push([6, 4]);
   posArr.push([5, 4]);
   posArr.push([4, 4]);
@@ -89,18 +83,34 @@ SNAKE.snake = function() {
     // save the current state of the canvas
     canvasContext.save();
     // changes
-
     canvasContext.fillStyle = 'black';
     for (let i = 0; i < posArr.length; i += 1) {
       drawSection(canvasContext, posArr[i]);
     }
-
     //restore the state of the canvas before changes
     canvasContext.restore();
   }
   //increment head position by one
   function advance() {
     let nextPos = posArr[0].slice();
+
+    switch(direction){
+      case 'left':
+        nextPos[0] -=1;
+        break;
+      case 'right':
+        nextPos[0] +=1;
+        break;
+      case 'up':
+        nextPos[1] -=1;
+        break;
+      case 'down':
+        nextPos[1] +=1;
+        break;
+      default:
+        console.log('Not sure how you got here but congrats.')
+    }
+
     nextPos[0] += 1;
 
     //next position at the start
@@ -108,22 +118,19 @@ SNAKE.snake = function() {
     //remove the last position
     posArr.pop();
   }
-
+  //checks if the input directin is contained withing the possible directions array. 
   function directionIsValid(inputDirection, movingDirection) {
     // console.log('movingDirection',movingDirection);
-    console.log('inputDirection',inputDirection); 
+    console.log('inputDirection', inputDirection);
     let possibleDirections = [];
-    if (movingDirection === 'up' || movingDirection === 'down') {
-      
 
-      possibleDirections = ['left', 'right'];
-      console.log('possibleDirections',possibleDirections);
+    if (movingDirection === 'up' || movingDirection === 'down') {
+      possibleDirections = ['left', 'right'];   
     } else if (movingDirection === 'left' || movingDirection === 'right') {
       possibleDirections = ['up', 'down'];
-      console.log(possibleDirections);
     }
 
-    return(possibleDirections.includes(inputDirection));
+    return (possibleDirections.includes(inputDirection));
   }
 
   function setDirection(inputDirection) {
@@ -133,7 +140,7 @@ SNAKE.snake = function() {
     if (directionIsValid(inputDirection, direction)) {
       console.log('setting movement direction to ', inputDirection);
       direction = inputDirection;
-     
+
     }
 
   }
