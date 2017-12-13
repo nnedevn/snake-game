@@ -111,8 +111,6 @@ SNAKE.snake = function() {
         console.log('Not sure how you got here but congrats.')
     }
 
-    nextPos[0] += 1;
-
     //next position at the start
     posArr.unshift(nextPos);
     //remove the last position
