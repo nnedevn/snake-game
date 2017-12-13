@@ -5,7 +5,7 @@ SNAKE.game = (function() {
 
   SNAKE.width = 200;
   SNAKE.height = 200;
-  let framerate = 1;
+  let framerate = 10;
   let snake;
 
   let canvas;
@@ -15,6 +15,21 @@ SNAKE.game = (function() {
   //Snake Array
   let snakeArray;
 
+  function addEventListeners(){
+    document.addEventListener('keydown', (evt)=>{
+      let directionKeys = {
+        37: 'left',
+        38: 'up',
+        39: 'down',
+        40: 'right'
+      }
+
+      let key = evt.which;
+
+
+    });
+  }
+ 
    function gameLoop() {
   
     canvasContext.clearRect(0, 0, SNAKE.width, SNAKE.height); //clear the canvas
@@ -34,6 +49,7 @@ SNAKE.game = (function() {
 
     snake = SNAKE.snake();
 
+    addEventListeners();
     gameLoop();
   }
 
@@ -54,16 +70,14 @@ SNAKE.snake = function() {
   let direction = 'right';
 
   function drawSection(canvasContext, pos) {
-    console.log(pos[1]);
     let x = cellSize * pos[0];
     let y = cellSize * pos[1];
-    console.log('x',x); 
     canvasContext.fillRect(x, y, cellSize, cellSize);
     
   }
 
   function drawSnake(canvasContext){
-    console.log('Drawing Snake');
+
     // save the current state of the canvas - blanc
     canvasContext.save();
     // changes
@@ -79,7 +93,6 @@ SNAKE.snake = function() {
   }
   //increment head position by one
   function advance(){
-    console.log(posArr);
     let nextPos = posArr[0].slice();
     nextPos[0] +=1;
 
