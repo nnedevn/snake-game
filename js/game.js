@@ -5,7 +5,12 @@ SNAKE.game = (function() {
   SNAKE.width = 200;
   SNAKE.height = 200;
   let framerate = 1;
+  let cellSize;
+
+
   let snake;
+  let apple;
+
   let canvas;
   let canvasContext;
 
@@ -27,43 +32,56 @@ SNAKE.game = (function() {
 
       //check if direction has been given
       if (newDirection) {
-        console.log('sending new direction to snake', newDirection);
+        //console.log('sending new direction to snake', newDirection);
         snake.setDirection(newDirection);
       }
     });
   }
 
+
+
+
   function gameLoop() {
 
     canvasContext.clearRect(0, 0, SNAKE.width, SNAKE.height); //clear the canvas
+    apple.draw(canvasContext);
     snake.advance();
-    snake.drawSnake(canvasContext);
+    snake.drawSnake(canvasContext, cel);
     // window.requestAnimationFrame(gameLoop);
     setTimeout(gameLoop, 1000 / framerate);
   }
 
+
+
   function drawBorder(){
-    canvasContext.save();
-    canvasContext.strokeStyle = "lightgrey";
-    canvasContext.lineWidth = SNAKE.cell;
+    // canvasContext.save();
+    // canvasContext.strokeStyle = "lightgrey";
+    // canvasContext.lineWidth = SNAKE.cell;
+    // TO DO: finish border
   }
 
   // Initializing function
   function init() {
-    console.log('Initializing..')
+    //console.log('Initializing..')
     canvas = document.getElementById('canvas');
     canvasContext = canvas.getContext('2d');
     canvas.setAttribute('width', SNAKE.width);
     canvas.setAttribute('height', SNAKE.height);
 
+    apple = SNAKE.apple();
     snake = SNAKE.snake();
 
     addEventListeners();
     gameLoop();
   }
 
+
   return {
     init: init
   }
 
 }());
+
+
+
+

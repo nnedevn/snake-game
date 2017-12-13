@@ -46,7 +46,7 @@ SNAKE.snake = function() {
         nextPos[1] += 1;
         break;
       default:
-        console.log('Not sure how you got here but congrats.')
+        //console.log('Not sure how you got here but congrats.')
     }
 
     //next position at the start
@@ -56,8 +56,8 @@ SNAKE.snake = function() {
   }
   //checks if the input directin is contained withing the possible directions array. 
   function directionIsValid(inputDirection, movingDirection) {
-    // console.log('movingDirection',movingDirection);
-    console.log('inputDirection', inputDirection);
+    // //console.log('movingDirection',movingDirection);
+    //console.log('inputDirection', inputDirection);
     let possibleDirections = [];
 
     if (movingDirection === 'up' || movingDirection === 'down') {
@@ -71,10 +71,10 @@ SNAKE.snake = function() {
 
   function setDirection(inputDirection) {
 
-    console.log('current direction', direction);
+    //console.log('current direction', direction);
 
     if (directionIsValid(inputDirection, direction)) {
-      console.log('setting movement direction to ', inputDirection);
+      //console.log('setting movement direction to ', inputDirection);
       direction = inputDirection;
 
     }
