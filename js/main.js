@@ -55,9 +55,11 @@ SNAKE.snake = function() {
 
   function drawSection(canvasContext, pos) {
     console.log(pos[1]);
-    let x = SNAKE.snake.cellSize * pos[0];
-    let y = SNAKE.snake.cellSize * pos[1];
+    let x = cellSize * pos[0];
+    let y = cellSize * pos[1];
+    console.log('x',x); 
     canvasContext.fillRect(x, y, cellSize, cellSize);
+    
   }
 
   function drawSnake(canvasContext){
