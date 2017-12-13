@@ -32,16 +32,6 @@ SNAKE.game = (function() {
 
   }
 
-
-  function createFood() {
-    console.log('Creating Food');
-    food = {
-      x: Math.round(Math.random() * (document.width - canvas.width) / canvas.width),
-      y: Math.round(Math.random() * (document.heigh - canvas.hight) / canvas.high)
-    }
-  }
-
-
   function gameLoop() {
     console.log('loop');
     xPos += 2;
@@ -82,6 +72,36 @@ SNAKE.snake = (function() {
     let x = SNAKE.snake.cellSize * pos[0];
     let y = SNAKE.snake.cellSize * pos[1];
     canvasContext.fillRect(x, y, SNAKE.snake.cellSize, SNAKE.snake.cellSize);
+  }
+
+  function drawSnake(canvasContext){
+    //save the current state of the canvas - blanc
+    canvasContext.save();
+    //changes
+    canvasContext.fillStyle = '#F00';
+    for (let i = 0; i< posArr.length; i+=1){
+      drawSnake(canvasContext, posArr[i]);
+    }
+
+    //restore the state of the canvas before changes
+    canvasContext.restore();
+  }
+
+  function advance(){
+
+    let nextPos = posArr[0].slice();
+    nextPos[0] +=1;
+
+    //ass next position at the start
+    posArr.unshift(nextPos);
+    //remove the last position
+    posArr.pop();
+  }
+
+
+  return {
+    drawSnake:drawSnake,
+    advance: advance
   }
 
 
