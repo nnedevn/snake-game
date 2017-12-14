@@ -135,7 +135,8 @@ SNAKE.snake = function() {
     drawSnake: drawSnake,
     advance: advance,
     setDirection: setDirection,
-    checkCollision: checkCollision
+    checkCollision: checkCollision,
+    cellSize: cellSize
   }
 
 

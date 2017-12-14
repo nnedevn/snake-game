@@ -57,7 +57,7 @@ SNAKE.game = (function() {
       gameOver();
       return; //stop the rest of the code from executing;
     }
-
+    drawBorder();
     apple.draw(canvasContext);
     snake.advance();
     snake.drawSnake(canvasContext);
@@ -68,9 +68,11 @@ SNAKE.game = (function() {
   }
 
   function drawBorder() {
-    // canvasContext.save();
-    // canvasContext.strokeStyle = "lightgrey";
-    // canvasContext.lineWidth = SNAKE.cell;
+    canvasContext.save();
+    canvasContext.strokeStyle = "red";
+    canvasContext.lineWidth = 20;
+    canvasContext.strokeRect(0,0, SNAKE.width, SNAKE.height);
+    canvasContext.restore();
     // TO DO: finish border
   }
 
