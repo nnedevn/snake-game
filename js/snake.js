@@ -1,4 +1,4 @@
-SNAKE.snake = function() {
+SNAKE.snake = function(canvasContext) {
   let posArr = [];
   let cellSize = 10;
   //starting snake length of 3 squares
@@ -84,20 +84,37 @@ SNAKE.snake = function() {
 
     let wallCollision = false;
     let snakeCollision = false;
-
-    //get 
+ 
     let head = posArr[0];
-    let headX = head[0];
-    let headY = head[1];
-
     let tail = posArr.slice(1);
 
+    let headX = head[0];
+    let headY = head[1];
+    
+    let minX = 1;
+    let minY = 1;
+    let maxX = SNAKE.width/cellSize -1;
+    let maxY = SNAKE.hight/cellSize -1;
+
+
+    
     //ckeck if the head's coordinates are the same as the coordinates of the rest of the tail
     for(let i=0; i<tail.length; i+=1){
       if(equalCoordinates(head, tail[i])){
-        console.log('collision!!!')
+        return true;
       }
     }
+
+    // X axis wall collision 
+    if(headX < minX || headX> maxX){
+      return true;
+    } 
+
+    // Y axis collision 
+    if (headY < minY || headY > maxY){
+      return true;
+    }
+
 
     // if the coordinated of head are the same as any of the coordinates of the tail return true
 
