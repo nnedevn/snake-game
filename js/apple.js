@@ -1,35 +1,56 @@
-SNAKE.apple = function(){
+SNAKE.apple = function() {
 
-  let position = [6,6];
+  //TO DO : remove this cellSize and hook it up to the game one
+  let cellSize = 10;
+
+  let position = [8, 8];
+
   //let radius = SNAKE.cellSize / 2;  
-  let radius = 5;
+  let radius = cellSize / 2;
 
+  function randomGenerator(rangeMin, rangeMax) {
+    rangeMin = Math.ceil(rangeMin);
+    rangeMax = Math.floor(rangeMax);
 
-function randomGenerator(rangeMin, rangeMax){
-  rangeMin = Math.ceil(min);
-  rangeMax = Math.floor(max);
-  return Math.floor(Math.random() * (rangeMax - rangeMin + 1)) + rangeMin;
-}
+    return Math.round((Math.floor(Math.random() * ((rangeMax - rangeMin) + 1)) + rangeMin) / 100) * 10;
 
+  }
 
-function draw(canvasContext){
+  // generate new position
+  function setRandomPosition() {
+    
+  }
 
+  //check if the applie is eaten
 
+  function draw(canvasContext) {
 
-  canvasContext.save();
+    let x = position[0] * cellSize ;
+    let y = position[1] * cellSize ;
 
-  canvasContext.fillStyle = 'red';
-  canvasContext.beginPath();
-  
-  canvasContext.arc(position[0], position[1], radius, 0, 2* Math.PI, true);
-  canvasContext.fill();
+    console.log("apple coordinates", position);
+    canvasContext.save();
 
-canvasContext.restore();
-}
+    canvasContext.fillStyle = 'red';
+    // canvasContext.beginPath();
 
+    // WHY!?!?!
+    canvasContext.fillRect(x, y, cellSize, cellSize);
+    // canvasContext.arc(x - radius, y + radius, 5, 0, 2 * Math.PI, true);
+    canvasContext.fill();
 
-return {
-  draw:draw
-}
+    canvasContext.restore();
+  }
+
+  function getPosition(){
+    return position;
+  }
+
+  return {
+    draw: draw,
+    getPosition: getPosition,
+    test: 'lalala'
+
+  }
 
 }

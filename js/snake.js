@@ -2,16 +2,17 @@ SNAKE.snake = function() {
 
   let posArr = [];
   let cellSize = 10;
+  let head;
   //starting snake length of 3 squares
-  posArr.push([6, 4], [5,4], [4,4], [3,4], [2,4], [1,4]);
+  // posArr.push([6, 4], [5,4], [4,4], [3,4], [2,4], [1,4]);
+  posArr.push([8, 8]);
   
-  let direction = 'right';
+  let direction = 'left';
 
   function drawSection(canvasContext, pos) {
     let x = cellSize * pos[0];
     let y = cellSize * pos[1];
     canvasContext.fillRect(x, y, cellSize, cellSize);
-
   }
 
   function drawSnake(canvasContext) {
@@ -27,7 +28,7 @@ SNAKE.snake = function() {
     canvasContext.restore();
   }
   //increment head position by one
-  function advance() {
+  function advance(apple) {
     let nextPos = posArr[0].slice();
 
     switch (direction) {
@@ -44,8 +45,11 @@ SNAKE.snake = function() {
         nextPos[1] += 1;
         break;
       default:
-        //console.log('Not sure how you got here but congrats.')
+        console.log('Not sure how you got here but congrats.');
+
     }
+
+      eatingApple(apple);
 
     //next position at the start
     posArr.unshift(nextPos);
@@ -83,7 +87,8 @@ SNAKE.snake = function() {
     let wallCollision = false;
     let snakeCollision = false;
  
-    let head = posArr[0];
+    head = posArr[0];
+   // console.log(head);
     let tail = posArr.slice(1);
 
     let headX = head[0];
@@ -91,9 +96,10 @@ SNAKE.snake = function() {
     
     let minX = 1;
     let minY = 1;
-    let maxX = SNAKE.width/cellSize -1;
+    let maxX = SNAKE.width/cellSize -1; // to account for the border
     let maxY = SNAKE.hight/cellSize -1;
 
+console.log('head coordiantes', head);
 
     
     //ckeck if the head's coordinates are the same as the coordinates of the rest of the tail
@@ -121,6 +127,20 @@ SNAKE.snake = function() {
    // console.log(equalCoordinates(head, tail[2]));
   }
 
+  function eatingApple(apple){
+
+
+    if (equalCoordinates(head, apple.getPosition())){
+      alert();
+      return true;
+    };
+    // console.log("head position",posArr[0]);
+  
+
+  }
+
+
+
   function equalCoordinates(xy1, xy2) {
     // console.log('xy2,', xy2);
     // console.log('xy1', xy1);
@@ -136,7 +156,10 @@ SNAKE.snake = function() {
     advance: advance,
     setDirection: setDirection,
     checkCollision: checkCollision,
-    cellSize: cellSize
+    cellSize: cellSize,
+    eatingApple: eatingApple,
+    equalCoordinates: equalCoordinates
+
   }
 
 

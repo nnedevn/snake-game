@@ -58,18 +58,22 @@ SNAKE.game = (function() {
       return; //stop the rest of the code from executing;
     }
     drawBorder();
+
     apple.draw(canvasContext);
-    snake.advance();
+    
     snake.drawSnake(canvasContext);
+    snake.advance(apple);
     // timeOut = window.requestAnimationFrame(gameLoop);
-    gameLoopTimer = setTimeout(gameLoop, 1000 / framerate);
-    console.log('timer',gameLoopTimer);
+  gameLoopTimer = setTimeout(gameLoop, 1000 / framerate);
+   // console.log('timer',gameLoopTimer);
 
   }
 
   function drawBorder() {
+
     canvasContext.save();
     canvasContext.strokeStyle = "red";
+    // TO DO: make line width dynamic
     canvasContext.lineWidth = 20;
     canvasContext.strokeRect(0,0, SNAKE.width, SNAKE.height);
     canvasContext.restore();
@@ -86,7 +90,6 @@ SNAKE.game = (function() {
 
     apple = SNAKE.apple();
     snake = SNAKE.snake();
-
     addEventListeners();
     gameLoop();
   }
