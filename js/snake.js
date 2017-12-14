@@ -49,7 +49,9 @@ SNAKE.snake = function() {
 
     }
 
-      eatingApple(apple);
+    if(eatingApple(apple)){
+      posArr .push(apple.getPosition());
+    }
 
     //next position at the start
     posArr.unshift(nextPos);
@@ -131,7 +133,6 @@ console.log('head coordiantes', head);
 
 
     if (equalCoordinates(head, apple.getPosition())){
-      alert();
       return true;
     };
     // console.log("head position",posArr[0]);
