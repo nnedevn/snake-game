@@ -4,15 +4,16 @@ SNAKE.game = (function() {
 
   SNAKE.width = 200;
   SNAKE.height = 200;
+
   let framerate = 2;
   let cellSize;
-
 
   let snake;
   let apple;
 
   let canvas;
   let canvasContext;
+  let gameLoopTimer;
 
   //Snake Array
   let snakeArray;
@@ -38,23 +39,35 @@ SNAKE.game = (function() {
     });
   }
 
+  function gameOver() {
 
+    clearTimeout(gameLoopTimer);
+
+    
+    canvasContext.clearRect(0, 0, SNAKE.width, SNAKE.height);
+
+  }
 
 
   function gameLoop() {
 
     canvasContext.clearRect(0, 0, SNAKE.width, SNAKE.height); //clear the canvas
-    snake.checkCollision();
+
+    if (snake.checkCollision()) {
+      gameOver();
+      return; //stop the rest of the code from executing;
+    }
+
     apple.draw(canvasContext);
     snake.advance();
     snake.drawSnake(canvasContext);
-    // window.requestAnimationFrame(gameLoop);
-    setTimeout(gameLoop, 1000 / framerate);
+    // timeOut = window.requestAnimationFrame(gameLoop);
+    gameLoopTimer = setTimeout(gameLoop, 1000 / framerate);
+    console.log('timer',gameLoopTimer);
+
   }
 
-
-
-  function drawBorder(){
+  function drawBorder() {
     // canvasContext.save();
     // canvasContext.strokeStyle = "lightgrey";
     // canvasContext.lineWidth = SNAKE.cell;
@@ -76,13 +89,8 @@ SNAKE.game = (function() {
     gameLoop();
   }
 
-
   return {
     init: init
   }
 
 }());
-
-
-
-

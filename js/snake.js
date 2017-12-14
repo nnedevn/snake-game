@@ -1,12 +1,10 @@
-SNAKE.snake = function(canvasContext) {
+SNAKE.snake = function() {
+
   let posArr = [];
   let cellSize = 10;
   //starting snake length of 3 squares
-  posArr.push([6, 4]);
-  posArr.push([5, 4]);
-  posArr.push([4, 4]);
-  posArr.push([3, 4]);
-  posArr.push([2, 4]);
+  posArr.push([6, 4], [5,4], [4,4], [3,4], [2,4], [1,4]);
+  
   let direction = 'right';
 
   function drawSection(canvasContext, pos) {
@@ -120,12 +118,12 @@ SNAKE.snake = function(canvasContext) {
 
 
 
-    console.log(equalCoordinates(head, tail[2]));
+   // console.log(equalCoordinates(head, tail[2]));
   }
 
   function equalCoordinates(xy1, xy2) {
-    console.log('xy2,', xy2);
-    console.log('xy1', xy1);
+    // console.log('xy2,', xy2);
+    // console.log('xy1', xy1);
     if (xy1[0] === xy2[0] && xy1[1] === xy2[1]) {
       
       return true;
