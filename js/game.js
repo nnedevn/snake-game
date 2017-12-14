@@ -4,7 +4,7 @@ SNAKE.game = (function() {
 
   SNAKE.width = 200;
   SNAKE.height = 200;
-  let framerate = 1;
+  let framerate = 2;
   let cellSize;
 
 
@@ -44,9 +44,10 @@ SNAKE.game = (function() {
   function gameLoop() {
 
     canvasContext.clearRect(0, 0, SNAKE.width, SNAKE.height); //clear the canvas
+    snake.checkCollision();
     apple.draw(canvasContext);
     snake.advance();
-    snake.drawSnake(canvasContext, cel);
+    snake.drawSnake(canvasContext);
     // window.requestAnimationFrame(gameLoop);
     setTimeout(gameLoop, 1000 / framerate);
   }
