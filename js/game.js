@@ -15,9 +15,6 @@ SNAKE.game = (function() {
   let canvasContext;
   let gameLoopTimer;
 
-  //Snake Array
-  let snakeArray;
-
   function addEventListeners() {
     document.addEventListener('keydown', (evt) => {
       evt.preventDefault();
@@ -42,12 +39,8 @@ SNAKE.game = (function() {
   function gameOver() {
 
     clearTimeout(gameLoopTimer);
-
-    
     canvasContext.clearRect(0, 0, SNAKE.width, SNAKE.height);
-
   }
-
 
   function gameLoop() {
 
@@ -60,19 +53,17 @@ SNAKE.game = (function() {
     drawBorder();
 
     apple.draw(canvasContext);
-    
     snake.drawSnake(canvasContext);
     snake.advance(apple);
     // gameLoopTimer = window.requestAnimationFrame(gameLoop);
   gameLoopTimer = setTimeout(gameLoop, 1000 / framerate);
    // console.log('timer',gameLoopTimer);
-
   }
 
   function drawBorder() {
 
     canvasContext.save();
-    canvasContext.strokeStyle = "red";
+    canvasContext.strokeStyle = "lightgreen";
     // TO DO: make line width dynamic
     canvasContext.lineWidth = 20;
     canvasContext.strokeRect(0,0, SNAKE.width, SNAKE.height);

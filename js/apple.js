@@ -28,7 +28,7 @@ SNAKE.apple = function() {
     let x = position[0] * cellSize ;
     let y = position[1] * cellSize ;
 
-    console.log("apple coordinates", position);
+    // console.log("apple coordinates", position);
     canvasContext.save();
     canvasContext.fillStyle = 'red';
     // canvasContext.beginPath();
