@@ -2,11 +2,10 @@ var SNAKE = {}
 
 SNAKE.game = (function() {
 
-  SNAKE.width = 200;
-  SNAKE.height = 200;
-  SNAKE.score = 0;
+  SNAKE.width = 800;
+  SNAKE.height = 600;
 
-  let framerate = 2;
+  let framerate = 4;
   let cellSize;
 
   let snake;
@@ -58,17 +57,13 @@ SNAKE.game = (function() {
       gameOver();
       return; //stop the rest of the code from executing;
     }
-    if(snake.eatingApple(apple)){
-      SNAKE.score +=1;
-      console.log(SNAKE.score);
-    }
     drawBorder();
 
     apple.draw(canvasContext);
     
     snake.drawSnake(canvasContext);
     snake.advance(apple);
-    // timeOut = window.requestAnimationFrame(gameLoop);
+    // gameLoopTimer = window.requestAnimationFrame(gameLoop);
   gameLoopTimer = setTimeout(gameLoop, 1000 / framerate);
    // console.log('timer',gameLoopTimer);
 

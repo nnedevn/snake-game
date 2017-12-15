@@ -4,28 +4,43 @@ SNAKE.snake = function() {
   let cellSize = 10;
   let head;
   //starting snake length of 3 squares
-  // posArr.push([6, 4], [5,4], [4,4], [3,4], [2,4], [1,4]);
-  posArr.push([8, 8]);
-  
-  let direction = 'left';
+  posArr.push([6, 4], [5, 4], [4, 4], [3, 4], [2, 4], [1, 4]);
+  // posArr.push([8, 8]);
 
-  function drawSection(canvasContext, pos) {
+  let direction = 'right';
+
+  function drawSection(canvasContext, pos, color) {
+
+    canvasContext.save();
+    canvasContext.fillStyle =color ;
     let x = cellSize * pos[0];
     let y = cellSize * pos[1];
     canvasContext.fillRect(x, y, cellSize, cellSize);
+    canvasContext.restore();
   }
 
   function drawSnake(canvasContext) {
 
     // save the current state of the canvas
-    canvasContext.save();
+    // canvasContext.save();
     // changes
-    canvasContext.fillStyle = 'black';
+
     for (let i = 0; i < posArr.length; i += 1) {
-      drawSection(canvasContext, posArr[i]);
+      console.log(i%2);
+      switch (i % 2) {
+
+        case 0:
+          drawSection(canvasContext, posArr[i], 'green');
+          console.log('black');
+          break;
+        case 1:
+          drawSection(canvasContext, posArr[i]), 'red';
+      }
+
+
     }
     //restore the state of the canvas before changes
-    canvasContext.restore();
+    // canvasContext.restore();
   }
   //increment head position by one
   function advance(apple) {
@@ -49,7 +64,7 @@ SNAKE.snake = function() {
 
     }
 
-    if(eatingApple(apple)){
+    if (eatingApple(apple)) {
       posArr.push(apple.getPosition());
       apple.setRandomPosition();
     }
@@ -89,36 +104,36 @@ SNAKE.snake = function() {
 
     let wallCollision = false;
     let snakeCollision = false;
- 
+
     head = posArr[0];
-   // console.log(head);
+    // console.log(head);
     let tail = posArr.slice(1);
 
     let headX = head[0];
     let headY = head[1];
-    
+
     let minX = 1;
     let minY = 1;
-    let maxX = SNAKE.width/cellSize -1; // to account for the border
-    let maxY = SNAKE.hight/cellSize -1;
+    let maxX = SNAKE.width / cellSize - 1; // to account for the border
+    let maxY = SNAKE.hight / cellSize - 1;
 
-console.log('head coordiantes', head);
+    console.log('head coordiantes', head);
 
-    
+
     //ckeck if the head's coordinates are the same as the coordinates of the rest of the tail
-    for(let i=0; i<tail.length; i+=1){
-      if(equalCoordinates(head, tail[i])){
+    for (let i = 0; i < tail.length; i += 1) {
+      if (equalCoordinates(head, tail[i])) {
         return true;
       }
     }
 
     // X axis wall collision 
-    if(headX < minX || headX> maxX){
+    if (headX < minX || headX > maxX) {
       return true;
-    } 
+    }
 
     // Y axis collision 
-    if (headY < minY || headY > maxY){
+    if (headY < minY || headY > maxY) {
       return true;
     }
 
@@ -127,17 +142,17 @@ console.log('head coordiantes', head);
 
 
 
-   // console.log(equalCoordinates(head, tail[2]));
+    // console.log(equalCoordinates(head, tail[2]));
   }
 
-  function eatingApple(apple){
+  function eatingApple(apple) {
 
 
-    if (equalCoordinates(head, apple.getPosition())){
+    if (equalCoordinates(head, apple.getPosition())) {
       return true;
     };
     // console.log("head position",posArr[0]);
-  
+
 
   }
 
@@ -147,7 +162,7 @@ console.log('head coordiantes', head);
     // console.log('xy2,', xy2);
     // console.log('xy1', xy1);
     if (xy1[0] === xy2[0] && xy1[1] === xy2[1]) {
-      
+
       return true;
     }
     return false;
