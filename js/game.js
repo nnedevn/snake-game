@@ -4,6 +4,7 @@ SNAKE.game = (function() {
 
   SNAKE.width = 200;
   SNAKE.height = 200;
+  SNAKE.score = 0;
 
   let framerate = 2;
   let cellSize;
@@ -56,6 +57,10 @@ SNAKE.game = (function() {
     if (snake.checkCollision()) {
       gameOver();
       return; //stop the rest of the code from executing;
+    }
+    if(snake.eatingApple(apple)){
+      SNAKE.score +=1;
+      console.log(SNAKE.score);
     }
     drawBorder();
 
