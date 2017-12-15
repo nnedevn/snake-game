@@ -8,7 +8,7 @@ function randomGenerator(rangeMin, rangeMax){
 
   // return Math.floor(Math.random() *10) *10
 
-  return Math.round((Math.floor(Math.random() *( (rangeMax - rangeMin) +1 )) + rangeMin)/10) *10;
+  return Math.round((Math.floor(Math.random() *( (rangeMax - rangeMin) +1 )) + rangeMin)/10) ;
 
 }
 

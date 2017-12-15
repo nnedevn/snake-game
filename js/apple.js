@@ -12,13 +12,13 @@ SNAKE.apple = function() {
     rangeMin = Math.ceil(rangeMin);
     rangeMax = Math.floor(rangeMax);
 
-    return Math.round((Math.floor(Math.random() * ((rangeMax - rangeMin) + 1)) + rangeMin) / 100) * 10;
+    return Math.round((Math.floor(Math.random() * ((rangeMax - rangeMin) + 1)) + rangeMin));
 
   }
 
   // generate new position
   function setRandomPosition() {
-    
+      position = [randomGenerator(1, 18), randomGenerator(2, 18)];
   }
 
   //check if the applie is eaten
@@ -30,7 +30,6 @@ SNAKE.apple = function() {
 
     console.log("apple coordinates", position);
     canvasContext.save();
-
     canvasContext.fillStyle = 'red';
     // canvasContext.beginPath();
 
@@ -38,7 +37,6 @@ SNAKE.apple = function() {
     canvasContext.fillRect(x, y, cellSize, cellSize);
     // canvasContext.arc(x - radius, y + radius, 5, 0, 2 * Math.PI, true);
     canvasContext.fill();
-
     canvasContext.restore();
   }
 
@@ -49,7 +47,7 @@ SNAKE.apple = function() {
   return {
     draw: draw,
     getPosition: getPosition,
-    test: 'lalala'
+    setRandomPosition: setRandomPosition
 
   }
 

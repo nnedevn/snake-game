@@ -50,7 +50,8 @@ SNAKE.snake = function() {
     }
 
     if(eatingApple(apple)){
-      posArr .push(apple.getPosition());
+      posArr.push(apple.getPosition());
+      apple.setRandomPosition();
     }
 
     //next position at the start
