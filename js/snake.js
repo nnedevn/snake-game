@@ -26,7 +26,6 @@ SNAKE.snake = function() {
     // changes
 
     for (let i = 0; i < posArr.length; i += 1) {
-      console.log(i % 2);
       switch (i % 2) {
         case 0:
           drawSection(canvasContext, posArr[i], 'green');
@@ -60,6 +59,8 @@ SNAKE.snake = function() {
     }
 
     if (eatingApple(apple)) {
+      SNAKE.score+=10;
+      console.log(SNAKE.score);
       posArr.push(apple.getPosition());
       apple.setRandomPosition();
     }

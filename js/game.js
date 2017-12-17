@@ -2,8 +2,10 @@ var SNAKE = {}
 
 SNAKE.game = (function() {
 
+  let score = document.getElementById('current-score');
   SNAKE.width = 800;
   SNAKE.height = 600;
+  SNAKE.score = 0;
 
   let framerate = 4;
   let cellSize;
@@ -42,17 +44,11 @@ SNAKE.game = (function() {
     canvasContext.clearRect(0, 0, SNAKE.width, SNAKE.height);
   }
 
-    let restartButton = document.getElementById('play-again-button');
-    
-      restartButton.addEventListener('click', function(){
-        console.log('hell9');
-      });
-
-
+  //save high score to local storage and reset score 
 
 
   function gameLoop() {
-
+    score.textContent = SNAKE.score;
     canvasContext.clearRect(0, 0, SNAKE.width, SNAKE.height); //clear the canvas
 
     if (snake.checkCollision()) {
@@ -65,8 +61,8 @@ SNAKE.game = (function() {
     snake.drawSnake(canvasContext);
     snake.advance(apple);
     // gameLoopTimer = window.requestAnimationFrame(gameLoop);
-  gameLoopTimer = setTimeout(gameLoop, 1000 / framerate);
-   // console.log('timer',gameLoopTimer);
+    gameLoopTimer = setTimeout(gameLoop, 1000 / framerate);
+    // console.log('timer',gameLoopTimer);
   }
 
   function drawBorder() {
@@ -75,14 +71,13 @@ SNAKE.game = (function() {
     canvasContext.strokeStyle = "lightgreen";
     // TO DO: make line width dynamic
     canvasContext.lineWidth = 20;
-    canvasContext.strokeRect(0,0, SNAKE.width, SNAKE.height);
+    canvasContext.strokeRect(0, 0, SNAKE.width, SNAKE.height);
     canvasContext.restore();
-    // TO DO: finish border
+
   }
 
   // Initializing function
   function init() {
-    //console.log('Initializing..')
     canvas = document.getElementById('canvas');
     canvasContext = canvas.getContext('2d');
     canvas.setAttribute('width', SNAKE.width);
