@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // restart the game when Play Again button is clicked
   let restartButton = document.getElementById('play-again-button');
   restartButton.addEventListener('click', function() {
+    SNAKE.game.toggleOverlay();
     SNAKE.game.init();
   });
 

@@ -1,25 +1,4 @@
- div{
-    background-color: rgba(255,0,0,.1);
- }
+.container {
+  display: grid;
 
-
-.container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: red;
 }
-canvas{
-    display: block;
-    background-color: blue;
-}
-
-#stats{
-    align-items: flex-end;
-    background-color: green;
-}
- .score{
-    /*display: inline-block;*/
-
-
- }
