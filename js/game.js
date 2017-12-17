@@ -30,22 +30,21 @@ SNAKE.game = (function() {
       let key = evt.which;
       let newDirection = directionKeys[key];
 
-      //check if direction has been given
       if (newDirection) {
-        //console.log('sending new direction to snake', newDirection);
         snake.setDirection(newDirection);
       }
     });
   }
 
   function gameOver() {
-
     clearTimeout(gameLoopTimer);
     canvasContext.clearRect(0, 0, SNAKE.width, SNAKE.height);
   }
 
   //save high score to local storage and reset score 
 
+/* gameLoop manages the game refresh
+ */
 
   function gameLoop() {
     score.textContent = SNAKE.score;
@@ -66,7 +65,6 @@ SNAKE.game = (function() {
   }
 
   function drawBorder() {
-
     canvasContext.save();
     canvasContext.strokeStyle = "lightgreen";
     // TO DO: make line width dynamic
