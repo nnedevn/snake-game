@@ -42,6 +42,15 @@ SNAKE.game = (function() {
     canvasContext.clearRect(0, 0, SNAKE.width, SNAKE.height);
   }
 
+    let restartButton = document.getElementById('play-again-button');
+    
+      restartButton.addEventListener('click', function(){
+        console.log('hell9');
+      });
+
+
+
+
   function gameLoop() {
 
     canvasContext.clearRect(0, 0, SNAKE.width, SNAKE.height); //clear the canvas

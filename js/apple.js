@@ -18,15 +18,15 @@ SNAKE.apple = function() {
 
   // generate new position
   function setRandomPosition() {
-      position = [randomGenerator(1, 18), randomGenerator(2, 18)];
+    position = [randomGenerator(1, 18), randomGenerator(2, 18)];
   }
 
   //check if the applie is eaten
 
   function draw(canvasContext) {
 
-    let x = position[0] * cellSize ;
-    let y = position[1] * cellSize ;
+    let x = position[0] * cellSize;
+    let y = position[1] * cellSize;
 
     // console.log("apple coordinates", position);
     canvasContext.save();
@@ -40,7 +40,7 @@ SNAKE.apple = function() {
     canvasContext.restore();
   }
 
-  function getPosition(){
+  function getPosition() {
     return position;
   }
 
