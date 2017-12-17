@@ -3,11 +3,14 @@ var SNAKE = {}
 SNAKE.game = (function() {
 
   let score = document.getElementById('current-score');
+  let highScore = document.getElementById('high-score');
+
+
   SNAKE.width = 800;
   SNAKE.height = 600;
   SNAKE.score = 0;
 
-  let framerate = 4;
+  let framerate = 8;
   let cellSize;
 
   let snake;
@@ -36,18 +39,42 @@ SNAKE.game = (function() {
     });
   }
 
+  function checkHighScore(){
+    if(localStorage.getItem('snakeHighScore')){
+      return
+    } else{
+      localStorage.setItem('snakeHighScore', 0);
+    }
+  }
+  function getHighScore(){
+      return localStorage.getItem('snakeHighScore');
+    } 
+
+  function setHightScore(){
+    localStorage.setItem('snakeHighScore', SNAKE.score);
+  }
+
+
+
   function gameOver() {
     clearTimeout(gameLoopTimer);
     canvasContext.clearRect(0, 0, SNAKE.width, SNAKE.height);
   }
 
-  //save high score to local storage and reset score 
+  //save high score to local storage
+    
 
 /* gameLoop manages the game refresh
  */
 
   function gameLoop() {
+    //update score
     score.textContent = SNAKE.score;
+    highScore.textContent = getHighScore();
+    if(SNAKE.score > localStorage.getItem('snakeHighScore')){
+      setHightScore();
+    }
+
     canvasContext.clearRect(0, 0, SNAKE.width, SNAKE.height); //clear the canvas
 
     if (snake.checkCollision()) {
@@ -84,6 +111,7 @@ SNAKE.game = (function() {
     apple = SNAKE.apple();
     snake = SNAKE.snake();
     addEventListeners();
+    checkHighScore();
     gameLoop();
   }
 
