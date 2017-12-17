@@ -8,20 +8,23 @@
 </head>
 
 <body>
-  <div class="container">
+  <div id="container">
     <div id="overlay">
       <p>Your final score <span id="final-score"></span></p>
       <a href="#" id="play-again-button">Play Again</a>
     </div>
-  </div>
-  <canvas tabindex="1" id="canvas" width="400" height="400">
+  
+
+<!--   <canvas tabindex="1" id="canvas">
     Canvas not supprted. Please update your browser.
-  </canvas>
+  </canvas> -->
+
   <div id="stats">
     <div class="score" id="current-score"></div>
     <div class="score" id="high-score"></div>
     <!-- <button id="reset-score">Reset</button> -->
   </div>
+</div>
   <!-- create canvas element -->
   <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
   <script src="js/game.js"></script>

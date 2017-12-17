@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   // start the game
-  SNAKE.game.init();
+  // SNAKE.game.init();
 
 
   // restart the game when Play Again button is clicked

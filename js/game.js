@@ -54,11 +54,10 @@ SNAKE.game = (function() {
     localStorage.setItem('snakeHighScore', SNAKE.score);
   }
 
-
-
   function gameOver() {
     clearTimeout(gameLoopTimer);
     canvasContext.clearRect(0, 0, SNAKE.width, SNAKE.height);
+    document.getElementById('container').removeChild(canvas);
   }
 
   //save high score to local storage
@@ -103,7 +102,10 @@ SNAKE.game = (function() {
 
   // Initializing function
   function init() {
-    canvas = document.getElementById('canvas');
+
+    canvas = document.createElement('canvas');
+    document.getElementById('container').appendChild(canvas);
+
     canvasContext = canvas.getContext('2d');
     canvas.setAttribute('width', SNAKE.width);
     canvas.setAttribute('height', SNAKE.height);

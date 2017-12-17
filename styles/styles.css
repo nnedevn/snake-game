@@ -1,56 +1,25 @@
-body {
-    background: url("../assets/green-snake-background.jpg") no-repeat top center;
-    font-family: Consolas;
+ div{
+    background-color: rgba(255,0,0,.1);
+ }
 
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+}
+canvas{
+    display: block;
+    background-color: blue;
 }
 
-a{
-    color:#ffffff;
-    text-decoration: none;
+#stats{
+    align-items: flex-end;
+    background-color: green;
 }
+ .score{
+    /*display: inline-block;*/
 
-canvas {
-    background: #FFF;
-    border: 1px #ccc solid;
-}
 
-.container {
-    margin: 30px auto 0 auto;
-    width: 600px;
-    overflow: auto;
-    position: relative;
-}
-
-.score{
-    width: 25%;
-    height: 50px;
-    padding-top: 20px;
-    float: left;
-    margin-right: 5px;
-    overflow: auto;
-    background: #000;
-    text-align: center;
-}
-
-#overlay{
-    /*display:none;*/
-    color: #000;
-    font-size: 25px
-}
-
-#reset-score {
-    padding: 10px;
-    float: right;
-}
-
-#stats {
-    width: 590;
-    background: #333;
-    padding: 5px;
-    font-size: 20px;
-    font-weight: 600;
-    color: #FFF;
-    margin-bottom: 5px;
-    overflow: auto;
-
-}
+ }
