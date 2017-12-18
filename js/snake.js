@@ -2,7 +2,7 @@ SNAKE.snake = function() {
   let posArr = [];
   let cellSize = 10;
   let head;
-  // starting snake length 
+  // starting snake length
   posArr.push([6, 4], [5, 4], [4, 4], [3, 4], [2, 4], [1, 4]);
   // posArr.push([8, 8]);
   let direction = 'right';
@@ -29,7 +29,7 @@ SNAKE.snake = function() {
     }
   }
   /* advance moves the snake and is resonsible for checking if the snake is eating the apple and score
-  * @param {obj} apple  
+  * @param {obj} apple
   **/
   function advance(apple) {
     let nextPos = posArr[0].slice();
@@ -62,7 +62,7 @@ SNAKE.snake = function() {
     //remove the last position
     posArr.pop();
   }
-  //checks if the input direction is contained withing the possible directions array. 
+  //checks if the input direction is contained withing the possible directions array.
   function directionIsValid(inputDirection, movingDirection) {
     let possibleDirections = [];
 
@@ -90,20 +90,20 @@ SNAKE.snake = function() {
 
     let minX = 1;
     let minY = 1;
-    let maxX = SNAKE.width / cellSize - 1; // to account for the border
-    let maxY = SNAKE.hight / cellSize - 1;
+    let maxX = SNAKE.width / cellSize - 2; // to account for the border
+    let maxY = SNAKE.height / cellSize - 2;
     //ckeck if the head's coordinates are the same as the coordinates of the rest of the tail
     for (let i = 0; i < tail.length; i += 1) {
       if (equalCoordinates(head, tail[i])) {
         return true;
       }
     }
-    // X axis wall collision 
+    // X axis wall collision
     if (headX < minX || headX > maxX) {
       return true;
     }
 
-    // Y axis collision 
+    // Y axis collision
     if (headY < minY || headY > maxY) {
       return true;
     }

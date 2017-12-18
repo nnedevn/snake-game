@@ -4,16 +4,12 @@ SNAKE.game = (function() {
 
   let score = document.getElementById('current-score');
   let highScore = document.getElementById('high-score');
-  let overlay = document.getElementById('overlay')
-  SNAKE.width = 800;
+  SNAKE.width = 600;
   SNAKE.height = 600;
-
   let framerate = 8;
   let cellSize;
-
   let snake;
   let apple;
-
   let canvas;
   let canvasContext;
   let gameLoopTimer;
@@ -85,7 +81,7 @@ SNAKE.game = (function() {
 
   function drawBorder() {
     canvasContext.save();
-    canvasContext.strokeStyle = "lightgreen";
+    canvasContext.strokeStyle = "#CECECE";
     // TO DO: make line width dynamic
     canvasContext.lineWidth = 20;
     canvasContext.strokeRect(0, 0, SNAKE.width, SNAKE.height);
