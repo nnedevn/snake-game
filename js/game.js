@@ -90,16 +90,19 @@ SNAKE.game = (function() {
     canvasContext.lineWidth = 20;
     canvasContext.strokeRect(0, 0, SNAKE.width, SNAKE.height);
     canvasContext.restore();
-
   }
 
   function toggleOverlay() {
   	let ele = document.getElementById("overlay");
+    let btn = document.getElementById('play-again-button');
+    let title = document.getElementById('title');
   	if(ele.style.display == "") {
       		ele.style.display = "none";
     	}
   	else {
   		ele.style.display = "";
+      title.innerText = "Game Over";
+      btn.innerText = 'Play Again?';
   	}
   }
 

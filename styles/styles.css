@@ -1,7 +1,16 @@
-.container {
-  display: grid;
-  grid-template-columns: 1fr;
+body{
+    font-family: 'VT323', monospace;
+}
 
+
+#container {
+
+
+}
+
+h1{
+  font-size: 4em;
+  font-weight: 400;
 }
 
 canvas{
@@ -10,6 +19,13 @@ canvas{
      margin-left: auto;
      margin-right: auto;
      display: block;
+}
+
+
+#play-again-button{
+  text-decoration: none;
+  border: 2px solid #000;
+  padding: 10px;
 }
 
 #overlay{
