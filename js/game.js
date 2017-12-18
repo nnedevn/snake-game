@@ -94,7 +94,7 @@ SNAKE.game = (function() {
   }
 
   function toggleOverlay() {
-  	var ele = document.getElementById("overlay");
+  	let ele = document.getElementById("overlay");
   	if(ele.style.display == "") {
       		ele.style.display = "none";
     	}
