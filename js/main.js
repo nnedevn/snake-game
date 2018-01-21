@@ -1,9 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // start the game
-  // SNAKE.game.init();
-
-
-  // restart the game when Play Again button is clicked
+/*Set up the canvas and add the "Play Again" click event listener */
   let restartButton = document.getElementById('play-again-button');
   restartButton.addEventListener('click', function() {
     SNAKE.game.toggleOverlay();

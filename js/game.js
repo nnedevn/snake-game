@@ -1,7 +1,6 @@
 var SNAKE = {}
 
-SNAKE.game = (function() {
-
+SNAKE.game = (function () {
   let score = document.getElementById('current-score');
   let highScore = document.getElementById('high-score');
   SNAKE.width = 600;
@@ -33,18 +32,18 @@ SNAKE.game = (function() {
     });
   }
 
-  function checkHighScore(){
-    if(localStorage.getItem('snakeHighScore')){
+  function checkHighScore() {
+    if (localStorage.getItem('snakeHighScore')) {
       return
-    } else{
+    } else {
       localStorage.setItem('snakeHighScore', 0);
     }
   }
-  function getHighScore(){
-      return localStorage.getItem('snakeHighScore');
-    }
+  function getHighScore() {
+    return localStorage.getItem('snakeHighScore');
+  }
 
-  function setHightScore(){
+  function setHightScore() {
     localStorage.setItem('snakeHighScore', SNAKE.score);
   }
 
@@ -55,13 +54,14 @@ SNAKE.game = (function() {
     toggleOverlay();
   }
 
-/* gameLoop manages the game refresh
- */
+  /* gameLoop manages the game refresh
+  TO DO: Rewrite logic to take advantage of window.requestAnimationFrame
+   */
   function gameLoop() {
     //update score
     score.textContent = SNAKE.score;
     highScore.textContent = getHighScore();
-    if(SNAKE.score > getHighScore()){
+    if (SNAKE.score > getHighScore()) {
       setHightScore();
     }
 
@@ -75,7 +75,6 @@ SNAKE.game = (function() {
     apple.draw(canvasContext);
     snake.drawSnake(canvasContext);
     snake.advance(apple);
-    // gameLoopTimer = window.requestAnimationFrame(gameLoop);
     gameLoopTimer = setTimeout(gameLoop, 1000 / framerate);
   }
 
@@ -89,22 +88,21 @@ SNAKE.game = (function() {
   }
 
   function toggleOverlay() {
-  	let ele = document.getElementById("overlay");
+    let ele = document.getElementById("overlay");
     let btn = document.getElementById('play-again-button');
     let title = document.getElementById('title');
-  	if(ele.style.display == "") {
-      		ele.style.display = "none";
-    	}
-  	else {
-  		ele.style.display = "";
+    if (ele.style.display == "") {
+      ele.style.display = "none";
+    }
+    else {
+      ele.style.display = "";
       title.innerText = "Game Over";
       btn.innerText = 'Play Again?';
-  	}
+    }
   }
 
   // Initializing function
   function init() {
-    // toggleOverlay();
     canvas = document.createElement('canvas');
     canvas.setAttribute('id', 'canvas');
     document.getElementById('container').appendChild(canvas);
@@ -118,7 +116,7 @@ SNAKE.game = (function() {
     checkHighScore();
     gameLoop();
   }
-
+  /*Reveal Modules: */
   return {
     init: init,
     toggleOverlay: toggleOverlay

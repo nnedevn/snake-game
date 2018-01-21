@@ -18,5 +18,8 @@
   "homepage": "https://github.com/nnedevn/snake_game#readme",
   "dependencies": {
     "simple-autoreload-server": "^0.2.7"
+  },
+  "devDependencies": {
+    "simple-server": "^1.0.1"
   }
 }

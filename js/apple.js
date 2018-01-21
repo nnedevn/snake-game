@@ -1,4 +1,4 @@
-SNAKE.apple = function() {
+SNAKE.apple = function () {
   //TO DO : remove this cellSize and hook it up to the game one
   let cellSize = 10;
   let position = [8, 8];
@@ -9,7 +9,6 @@ SNAKE.apple = function() {
     rangeMax = Math.floor(rangeMax);
 
     return Math.round((Math.floor(Math.random() * ((rangeMax - rangeMin) + 1)) + rangeMin));
-
   }
   // generate new position
   function setRandomPosition() {
@@ -17,7 +16,6 @@ SNAKE.apple = function() {
   }
 
   function draw(canvasContext) {
-
     let x = position[0] * cellSize;
     let y = position[1] * cellSize;
 
@@ -31,7 +29,7 @@ SNAKE.apple = function() {
   function getPosition() {
     return position;
   }
-
+  /*Reveal Modules: */
   return {
     draw: draw,
     getPosition: getPosition,

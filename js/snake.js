@@ -4,7 +4,6 @@ SNAKE.snake = function() {
   let head;
   // starting snake length
   posArr.push([6, 4], [5, 4], [4, 4], [3, 4], [2, 4], [1, 4]);
-  // posArr.push([8, 8]);
   let direction = 'right';
 
   function drawSection(canvasContext, pos, color) {
@@ -120,6 +119,7 @@ SNAKE.snake = function() {
       return true;
     }
   }
+  /*Reveal Modules: */
   return {
     drawSnake: drawSnake,
     advance: advance,
