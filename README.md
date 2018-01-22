@@ -5,7 +5,7 @@ Recreate the famous Snake game utilizing a  Revealing Module Pattern which expos
 ## Approach
 * Researched existing implementations
 * Broke down the structure into main components
-
+* Structucred each component into an encapsulated function, which exposes only certain methods
 ## Technologies Used
 * Vanilla JavaScript (not hte Vanilla JS framework)
 * HTML 5 Canvas
