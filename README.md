@@ -7,6 +7,8 @@ Recreate the famous Snake game utilizing a  Revealing Module Pattern which expos
 * Broke down the structure into main components
 
 ## Technologies Used
+* Vanilla JavaScript (not hte Vanilla JS framework)
+* HTML 5 Canvas
 ## Next Steps
 - [ ] Implement two player mode via socket.io
 - [ ] Rewrite the game logic to take advantage of the requestAnimationFrame method for smooth animation
