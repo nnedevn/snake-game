@@ -20,6 +20,6 @@
     "simple-autoreload-server": "^0.2.7"
   },
   "devDependencies": {
-    "simple-server": "^1.0.1"
+    "simple-server": "^1.1.1"
   }
 }
